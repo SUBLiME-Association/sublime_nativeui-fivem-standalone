@@ -1,13 +1,13 @@
 
 function LOAD_MODULES(dir, module)
     assert(type(dir) == 'string')
-    if type(module) ~= 'table'  then
+    if type(module) ~= 'table' then
         assert(type(module) == 'string')
         chunk = LoadResourceFile('sublime_nativeui', ("%s/%s.lua"):format(dir, module))
         chunk = load(chunk, ('@@sublime_nativeui/%s/%s.lua'):format(dir, module))
         chunk()
     else
-        for _,v in pairs(module)do
+        for _,v in ipairs(module) do
             chunk = LoadResourceFile('sublime_nativeui', ("%s/%s.lua"):format(dir, v))
             chunk = load(chunk, ('@@sublime_nativeui/%s/%s.lua'):format(dir, v))
             chunk()
