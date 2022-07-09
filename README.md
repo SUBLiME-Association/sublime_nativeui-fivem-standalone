@@ -17,7 +17,7 @@
 ---@param h number|nil
 ---@param color table|nil
 ---@return table
-local example = SublimeUI.CreateMenu(nil, "test1", "test", 500, 500, nil, nil, {255,0,0,100})
+local example = SublimeUI.CreateMenu(nil, nil, nil, nil, nil, nil, nil, nil)
 
 ------------------------------------------------------------------------------
 local menu1,menu2 -- init var like it if you want use it local and not global 
