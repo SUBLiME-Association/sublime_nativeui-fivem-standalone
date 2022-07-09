@@ -96,7 +96,9 @@ function SublimeUI.CreateMenu(parent, title, subtitle, x, y, w, h, color) -- typ
     --tooldev
     self.get = GetDataMenu -- only for dev
     
-
+    if not canVisible(self) then
+        return
+    end
     TotalMenu[id] = self
     return setmetatable(self, SublimeUI.Menus)
 end
@@ -105,13 +107,14 @@ end
 function SublimeUI.PlayThread(self, bool)
     local intervale
     CreateThread(function()
+        self:beVisible()
         while true do
-            Wait(0.5)
+            Wait(0)
             intervale = true
             if bool then
                 if self.visible then intervale = false
-                    self:composition()
                     self:isVisible()
+                    self:composition()
                 end
 
                 if intervale then
@@ -124,7 +127,7 @@ function SublimeUI.PlayThread(self, bool)
     end)
 end
 
-function SublimeUI.OpenMenu(self) -- utile mais à revoir avec le self:open
+function SublimeUI.OpenMenu(self) -- utile mais à revoir avec le self:open mmh du coups modifier suite a la nouvelle facon de gerer l'ouverture mais je laisse en attendant
     if not self:canVisible() then
         print("ne peut être visible")
         return false
