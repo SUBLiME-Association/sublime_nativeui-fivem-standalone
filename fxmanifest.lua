@@ -13,7 +13,7 @@ description {
 }
 
 
-version 'v0.0.2.2'
+version 'v0.0.2.3'
 
 
 client_scripts {
