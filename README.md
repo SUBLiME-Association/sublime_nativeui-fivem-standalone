@@ -27,23 +27,58 @@ function ToggleMenu(menu)
         if menu1 then
             --menu1:glare(false) -- work
             menu1:open(true)
-            function menu1:beVisible() -- when menu is init and start to be open
+            function menu1:beVisible() -- before you are in loop
                 print(("id : %s, title : %s, subtitle : %s, x : %s, y : %s, w : %s, h : %s, color : %s, parent : %s, menu_table_ref : %s"):format(self.id, self.title, self.subtitle, self.setting.x, self.setting.y, self.setting.w, self.setting.h, json.encode(self.options.color.banner), self.parent, self))
                 --print(self.title)
                 --self.display.background = false
-                Wait(5000)
                 self.options.color.subtitle = {255,255,255,120}
                 self.title = "NewTitle"
-                self:addButton("~y~boutton1", 'description1', {color = {255,255,255,80}})
-                self:addButton("~w~boutton2", 'description2', {color = {255,255,255,80}})
-                self:addButton("~w~boutton3", 'description3', {color = {255,255,255,80}})
-                self:addButton("~w~boutton4", 'description4', {color = {255,255,255,80}})
+                self:addButton("~y~boutton1", 'description1', {color = {255,255,255,80}}, true, {
+                    onActive = function()
+                        print("onActive .. 1")
+                    end,
+                    onSelected = function()
+                        print("onSelected .. 1")
+                    end
+                })
+                self:addButton("~w~boutton2", 'description2', {color = {255,255,255,80}}, true, {
+                    onActive = function()
+                        --print("onActive .. 2")
+                    end,
+                    onSelected = function()
+                        print("onSelected .. 2")
+                    end
+                })
+                self:addButton("~w~boutton3", 'description3', {color = {255,255,255,80}}, true, {
+                    onActive = function()
+                        print("onActive .. 3")
+                    end,
+                    onSelected = function()
+                        print("onSelected .. 3")
+                    end
+                })
+                self:addButton("~w~boutton4", 'description4', {color = {255,255,255,80}}, true, {
+                    onActive = function()
+                        --print("onActive .. 4")
+                    end,
+                    onSelected = function()
+                        print("onSelected .. 4")
+                    end
+                })
                 print(self.items.button[1].texte, self.items.button[1].texte, json.encode(self.items.button[1].style.color))
-                for i = 1, 100 do
-                    self:addButton("~g~#~w~"..(i+4), i, {color = {(i*4+100),(i*4+100),(i*4+100),80+(i*2+4)}})
-                end
+                --for i = 1, 10 do
+                --    self:addButton("~g~#~w~"..(i+4), i, {color = {(i*4+100),(i*4+100),(i*4+100),80+(i*2+4)}}, true, {
+                --        onActive = function()
+                --            --print("onActive .. 4")
+                --        end,
+                --        onSelected = function()
+                --            print("onSelected .. 4")
+                --        end
+                --    })
+                --end
             end
-            function menu1:isVisible()-- when menu is active (loop)
+            function menu1:isVisible()-- Loop active when you use menu1:open(true)
+                
                 --print(("id : %s, title : %s, subtitle : %s, x : %s, y : %s, w : %s, h : %s, color : %s, parent : %s, menu_table_ref : %s"):format(self.id, self.title, self.subtitle, self.x, self.y, self.w, self.h, json.encode(self.color), self.  parent, self))
             end
         end

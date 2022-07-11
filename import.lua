@@ -15,5 +15,8 @@ function LOAD_MODULES(dir, module)
     end
 end
 
-LOAD_MODULES('utils', {'drawSprite', 'drawRect', 'drawText', 'math'})
-LOAD_MODULES('menu', {'main', 'config'})
+if not IsDuplicityVersion() then
+    LOAD_MODULES('utils', {'drawSprite', 'drawRect', 'drawText', 'math'})
+    LOAD_MODULES('menu', {'main', 'config', 'controle'})
+    LOAD_MODULES('menu/items', {'banner','button','list'})
+end
